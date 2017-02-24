@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="14dp">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Inserisci Titolo"
+        android:padding="12dp"
+        android:id="@+id/title_ET"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_ET"
+        android:hint="Inserisci una descrizione"
+        android:padding="12dp"
+        android:id="@+id/description_ET"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Data di scadenza:"
+        android:id="@+id/data_TV"
+        android:layout_below="@id/description_ET"
+        android:textSize="24sp"/>
+
+    <CalendarView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/data_TV"
+        android:id="@+id/data_CV"></CalendarView>
+
+</RelativeLayout>

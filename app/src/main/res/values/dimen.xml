@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fab_margin">14dp</dimen>
+    <dimen name="item_note_description">12dp</dimen>
+    <dimen name="item_note_title">28dp</dimen>
+    <dimen name="item_linear_super_padding">8dp</dimen>
+</resources>

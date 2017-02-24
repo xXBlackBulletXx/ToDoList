@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ToDoList</string>
+    <string name="item_note_title">Titolo</string>
+    <string name="item_note_description">Descrizione</string>
 </resources>
