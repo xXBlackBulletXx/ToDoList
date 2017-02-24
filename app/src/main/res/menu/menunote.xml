@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Modifica"
+        android:id="@+id/modifica_toolbar_item"
+        android:icon="@drawable/pencil"
+        android:orderInCategory="100"
+        android:showAsAction="always"></item>
+
+    <item android:title="Elimina"
+        android:id="@+id/elimina_item"
+        android:icon="@drawable/delete"
+        android:orderInCategory="100"
+        android:showAsAction="always"></item>
+
+</menu>

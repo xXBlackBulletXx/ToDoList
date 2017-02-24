@@ -6,5 +6,5 @@
         android:id="@+id/conferma_item"
         android:icon="@drawable/check"
         android:orderInCategory="100"
-        app:showAsAction="always"/>
+        android:showAsAction="always"/>
 </menu>

@@ -6,7 +6,8 @@
     android:paddingTop="14dp"
     android:elevation="5dp"
     android:background="#fff"
-    android:foreground="?attr/selectableItemBackground">
+    android:foreground="?attr/selectableItemBackground"
+    android:id="@+id/nota_RV">
 
     <TextView
         android:paddingLeft="14dp"

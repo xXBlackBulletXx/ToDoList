@@ -18,6 +18,9 @@ import android.widget.EditText;
 import android.widget.Toolbar;
 
 import java.text.Normalizer;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import antoniorusso.todolist.R;
@@ -30,6 +33,8 @@ public class FormActivity extends AppCompatActivity implements CalendarView.OnDa
     EditText titleTV, descriptionTV;
     CalendarView calendar;
     static  String GIORNO, MESE, ANNO;
+    static int POS = -1;
+    Intent i;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,7 +47,25 @@ public class FormActivity extends AppCompatActivity implements CalendarView.OnDa
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.close);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        i = getIntent();
+        if(i.getStringExtra("Title")!= null){
+            titleTV.setText(i.getStringExtra("Title"));
+            descriptionTV.setText(i.getStringExtra("Description"));
+            try {
+                String dateString = i.getStringExtra("DataScadenza");
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                Date date = sdf.parse(dateString);
 
+                long startDate = date.getTime();
+
+                calendar.setDate(startDate);
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            POS = i.getIntExtra("POSITION", -1);
+            Log.i("POSITIONSETTED", String.valueOf(POS));
+        }
     }
 
     @Override
@@ -64,11 +87,20 @@ public class FormActivity extends AppCompatActivity implements CalendarView.OnDa
         switch (item.getItemId()){
             case R.id.conferma_item:
                 if(GIORNO != null && !titleTV.getText().toString().isEmpty() && !descriptionTV.getText().toString().isEmpty()){
+
                     Intent intent = new Intent();
                     intent.putExtra("TITOLO", titleTV.getText().toString());
                     intent.putExtra("DESCRIZIONE", descriptionTV.getText().toString());
-                    intent.putExtra("DATASCADENZA", GIORNO + "-" + (Integer.parseInt(MESE)+1) + "-" + ANNO);
-                    setResult(100, intent);
+                    intent.putExtra("DATASCADENZA", GIORNO + "/" + (Integer.parseInt(MESE)+1) + "/" + ANNO);
+                    if(POS != -1){
+                        Log.i("INTENT", "200");
+                        setResult(200, intent);
+                        POS = -1;
+                    }else{
+                        Log.i("INTENT", "100");
+                        setResult(100, intent);
+                    }
+
                     finish();
                 }else{
                     AlertDialog.Builder builder = new AlertDialog.Builder(FormActivity.this);
